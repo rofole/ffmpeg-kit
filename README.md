@@ -1,3 +1,9 @@
+# README（FORK）
+This project is a fork of [ffmpeg-kit](https://github.com/arthenica/ffmpeg-kit) with the following modifications:
+- Executable Files: Builds the ffmpeg and ffprobe executable files specifically for Android.
+- Libraries: Compiles both static and shared libraries of FFmpeg for Android.
+- Exclusion: Does not build the ffmpeg-kit itself (the original wrapper/library).
+- For detailed build instructions, refer to [my-dev.md](./my-dev.md).
 # FFmpegKit ![GitHub release](https://img.shields.io/badge/release-v6.0-blue.svg) ![Maven Central](https://img.shields.io/maven-central/v/com.arthenica/ffmpeg-kit-min) ![CocoaPods](https://img.shields.io/cocoapods/v/ffmpeg-kit-ios-min) ![pub](https://img.shields.io/pub/v/ffmpeg_kit_flutter.svg) ![npm](https://img.shields.io/npm/v/ffmpeg-kit-react-native.svg)
 
 <img src="https://github.com/arthenica/ffmpeg-kit/blob/main/docs/assets/ffmpeg-kit-icon-v9.png" width="240">

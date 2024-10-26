@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash 
+# set -x
 
 HOST_PKG_CONFIG_PATH=$(command -v pkg-config)
 if [ -z "${HOST_PKG_CONFIG_PATH}" ]; then
@@ -346,7 +347,7 @@ if [[ -n ${FFMPEG_KIT_LTS_BUILD} ]] && [[ ${API} -lt 18 ]]; then
 fi
 
 # ALWAYS BUILD SHARED LIBRARIES
-BUILD_LIBRARY_OPTIONS="--disable-static --enable-shared"
+BUILD_LIBRARY_OPTIONS="--enable-static --enable-shared"
 
 # OPTIMIZE FOR SPEED INSTEAD OF SIZE
 if [[ -z ${FFMPEG_KIT_OPTIMIZED_FOR_SPEED} ]]; then
@@ -413,6 +414,13 @@ else
 fi
 
 ###################################################################
+echo "configure $PWD"
+echo  "CFLAGS:$CFLAGS"
+echo "CXXFLAGS:$CXXFLAGS"
+echo  "LDFLAGS:$LDFLAGS"
+echo "PKG_CONFIG_LIBDIR:$PKG_CONFIG_LIBDIR"
+
+
 
 ./configure \
   --cross-prefix="${HOST}-" \
@@ -438,6 +446,7 @@ fi
   --enable-optimizations \
   --enable-swscale \
   ${BUILD_LIBRARY_OPTIONS} \
+  --disable-ffplay  \
   --enable-pthreads \
   --enable-v4l2-m2m \
   --disable-outdev=fbdev \
@@ -446,7 +455,6 @@ fi
   --disable-xmm-clobber-test \
   ${DEBUG_OPTIONS} \
   --disable-neon-clobber-test \
-  --disable-programs \
   --disable-postproc \
   --disable-doc \
   --disable-htmlpages \
@@ -533,7 +541,7 @@ overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/asm.h "${FFMPEG_LIBRARY_PAT
 overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/x86/timer.h 1>>"${BASEDIR}"/build.log 2>&1
 overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/arm/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/arm/timer.h 1>>"${BASEDIR}"/build.log 2>&1
 overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/aarch64/timer.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/aarch64/timer.h 1>>"${BASEDIR}"/build.log 2>&1
-overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/emms.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/x86/emms.h 1>>"${BASEDIR}"/build.log 2>&1
+# overwrite_file "${BASEDIR}"/src/ffmpeg/libavutil/x86/emms.h "${FFMPEG_LIBRARY_PATH}"/include/libavutil/x86/emms.h 1>>"${BASEDIR}"/build.log 2>&1
 
 if [ $? -eq 0 ]; then
   echo "ok"

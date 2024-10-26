@@ -342,6 +342,9 @@ if [[ -n ${ANDROID_ARCHITECTURES} ]]; then
 
   echo -e "DEBUG: Copied source.txt successfully\n" 1>>"${BASEDIR}"/build.log 2>&1
 
+  SKIP_ffmpeg_kit=1
+  echo " SKIP_ffmpeg_kit:${SKIP_ffmpeg_kit} "
+  echo " NO_ARCHIVE:${NO_ARCHIVE} "
   # BUILD NATIVE LIBRARY
   if [[ ${SKIP_ffmpeg_kit} -ne 1 ]]; then
     if [ "$(is_darwin_arm64)" == "1" ]; then
@@ -391,3 +394,5 @@ if [[ -n ${ANDROID_ARCHITECTURES} ]]; then
     echo -e "INFO: Skipped creating Android archive.\n" 1>>"${BASEDIR}"/build.log 2>&1
   fi
 fi
+
+echo "BUILD FINISHED!!"
