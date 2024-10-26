@@ -1,8 +1,8 @@
 
 # build
-
-## dependency
-### host
+##Android
+### dependency
+#### host
 1. The following packages are required by the build scripts.
 
 autogen autoconf automake libtool pkg-config curl git doxygen nasm
@@ -14,7 +14,7 @@ cmake gcc gperf texinfo yasm bison autogen wget autopoint meson ninja ragel grof
 sudo apt-get install autogen autoconf automake libtool pkg-config curl git doxygen nasm cmake gcc gperf texinfo yasm bison autogen wget autopoint meson  ragel groff gtk-doc-tools libtasn1-bin ninja
 ```
 
-## Common Build process Errors
+### Common Build process Errors
 1. NDK Version Compatibility Issues
    Compilation errors occur whit library aom and sdl when using NDK26, while switch to NDK25 resolves the issues.
 2. GnuTLS and OpenSSL confilt:
@@ -25,7 +25,7 @@ sudo apt-get install autogen autoconf automake libtool pkg-config curl git doxyg
    if certail libraries fail to compile, delete the corresponding souce folder and prebuild folder ,and build frm scratch.
 
 
-## build instuctions
+### build instuctions
 ```
 source my-env.sh 
 ./android.sh -h
@@ -82,7 +82,7 @@ source my-env.sh
     --no-archive 
 
 ```
-### other options
+#### other options
 ```
   
   Advanced options:
